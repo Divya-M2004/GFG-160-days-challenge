@@ -1,0 +1,27 @@
+
+class Solution:
+    def countDistinct(self, A,K):
+        N=len(A)
+        dict = {}
+        l = []
+        for i in range(K):
+            if A[i] not in dict:
+                dict[A[i]] = 1
+            else:
+                dict[A[i]] +=1
+        l.append(len(dict))
+        
+        for j in range(1,N-K+1):
+            if A[j+K-1] not in dict:
+                dict[A[j+K-1]] = 1
+            else:
+                dict[A[j+K-1]] +=1
+            
+            dict[A[j-1]] -= 1
+            
+            if dict[A[j-1]] == 0:
+                del dict[A[j-1]]
+                
+            l.append(len(dict))
+        
+        return l
