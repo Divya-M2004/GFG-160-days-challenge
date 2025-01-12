@@ -1,0 +1,17 @@
+class Solution:
+    def maxWater(self, arr):
+        l,r,lm,rm,res=0,len(arr)-1,0,0,0
+        while l<r:
+            if arr[l]<=arr[r]:
+                if arr[l]>=lm:
+                    lm=arr[l]
+                else:
+                    res+=lm-arr[l]
+                l+=1
+            else:
+                if arr[r]>=rm:
+                    rm=arr[r]
+                else:
+                    res+=rm-arr[r]
+                r-=1
+        return res
