@@ -1,0 +1,14 @@
+def fun(ans,index,ele):
+    if len(ele)==index:
+        ans.add("".join(ele))
+        return
+    for i in range(index,len(ele)):
+        ele[i], ele[index] = ele[index], ele[i]
+        fun(ans,index+1,ele)
+        ele[i], ele[index] = ele[index], ele[i]
+class Solution:
+    def findPermutation(self, s):
+        ele=[i for i in s]
+        ans=set()
+        fun(ans,0,ele)
+        return list(ans)
