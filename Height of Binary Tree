@@ -1,0 +1,7 @@
+class Solution:
+    def height(self, Node):
+        if Node is None:
+            return -1
+        else:
+            return max(self.height(Node.left),self.height(Node.right)) +1
+
